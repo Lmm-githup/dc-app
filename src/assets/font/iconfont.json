@@ -1,0 +1,37 @@
+{
+  "id": "1557974",
+  "name": "vue",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "584245",
+      "name": "搜索",
+      "font_class": "iconfonticonfontsousuo1",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "2023598",
+      "name": "会员",
+      "font_class": "huiyuan",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
+      "icon_id": "2552066",
+      "name": "分类",
+      "font_class": "fenlei",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "10026241",
+      "name": "分类",
+      "font_class": "fenleishouye",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    }
+  ]
+}
