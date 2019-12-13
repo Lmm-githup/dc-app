@@ -9,6 +9,7 @@
         </group>
       </div>
       <div class="searchBtn" @click="goDetails">查询</div>
+      <div style="width:100%;height:7rem;"></div>
    </div>
 </template>
 
@@ -23,18 +24,19 @@ export default {
   },
   data() {
     return {
-      mobile:""
+      mobile:"",
     };
   },
   props: {},
-  computed: {},
-  watch: {},
-  created() {
-    
+  watch: {
   },
-  mounted() {},
+  created() {
+  },
+  mounted() {
+  },
   methods: {
    goDetails() {
+
       let reg = /^[1]([3-9])[0-9]{9}$/;
       if (!reg.test(this.mobile)) {
         this.$vux.toast.show({

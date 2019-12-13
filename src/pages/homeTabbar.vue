@@ -1,5 +1,5 @@
 <template>
-  <div class="main-index">
+  <div class="main-index" v-show="hidshow">
     <tabbar @on-index-change="handleTab">
       <!-- <tabbar-item v-if="messageTotal > 0" :badge="messageTotal" :selected="currentIndex == 0">
         <i slot="icon" class="fa fa-commenting-o" aria-hidden="true"></i>
@@ -59,8 +59,28 @@ export default {
       currentIndex: 1,
       // messageTotal: "0",
       userInfo: {},
-      indexs:1
+      indexs:1,
+      docmHeight: document.documentElement.clientHeight,  //默认屏幕高度
+      showHeight: document.documentElement.clientHeight,   //实时屏幕高度
+      hidshow:true  //显示或者隐藏footer
     };
+  },
+  mounted() {
+    // window.onresize监听页面高度的变化
+    window.onresize = ()=>{
+        return(()=>{
+            this.showHeight = document.body.clientHeight;
+        })()
+    }
+  },
+  watch: {
+    showHeight:function() {
+        if(this.docmHeight > this.showHeight){
+            this.hidshow=false
+        }else{
+            this.hidshow=true
+        }
+    }
   },
   created() {
     this.userInfo = this.$utils.getLocalData(USER_INFO, true);

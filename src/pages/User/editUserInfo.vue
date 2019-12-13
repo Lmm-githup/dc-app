@@ -1,7 +1,6 @@
 <template>
   <div class="main">
     <x-header :left-options="{showBack: true,backText: ''}">个人资料</x-header>
-
     <div class="head-info">
       <div class="head-img-box">
         <van-uploader
@@ -190,9 +189,11 @@ export default {
 /deep/ .vux-header{background:#312640 !important;}
 /deep/ .vux-header-title{color:#fff !important;}
 .main {
+  padding: 0 0;
   color: #101010;
   font-size: 0.37333rem;
   background:#312640;
+  width:100%;
 }
 .head-info {
   background-color: #312640;

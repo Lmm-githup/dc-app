@@ -122,7 +122,7 @@
       </a>
       <a class="nav-item" @click="StaTisticss">
         <div class="nav-item-img">
-          <img src="src/assets/images/me/work/count.png" alt="">
+          <img src="/src/assets/images/me/work/count.png" alt="">
         </div>
         <div class="nav-item-name">统计</div>
       </a>
@@ -541,7 +541,7 @@ export default {
       }
       .left{}
       .mt-10 {
-        
+        margin-top:.3rem;
       }
     }
   }

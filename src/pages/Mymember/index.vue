@@ -584,6 +584,8 @@ export default {
 /deep/ .vux-checker-box {
   padding: 0.2rem 0.4rem;
 }
+/deep/ .vux-popup-header-right{color:#FFB94E!important;}
+/deep/ .weui-btn_primary{background:#FFB94E!important;}
 .demo2-item {
   border: 1px solid #ececec;
   padding: 3px 6px;
