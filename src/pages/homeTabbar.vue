@@ -88,7 +88,7 @@ export default {
     this.currentIndex = this.$utils.getLocalData(CURRENT_INDEX) || 1;
   },
   methods: {
-    ...mapActions(["QUERY_MSG"]),
+    // ...mapActions(["QUERY_MSG"]),
     handleTab(i) {
       this.indexs = i;
       this.$refs['a2'].$el.children[0].style.backgroundColor= i == 1?'#FFB94E':'#fff';

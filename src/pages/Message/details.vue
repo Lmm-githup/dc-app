@@ -8,7 +8,7 @@
       style="width:100%;position:absolute;left:0;top:0;z-index:100;"
     >{{titleArr[remindTypeCode]}}</x-header>
 
-     <tab custom-bar-width="75px" v-if="remindTypeCode == 1">
+    <tab custom-bar-width="75px" v-if="remindTypeCode == 1" active-color="#FFB94E">
       <tab-item selected @on-item-click="toggleTab">未提醒</tab-item>
       <tab-item @on-item-click="toggleTab">已提醒</tab-item>
     </tab>

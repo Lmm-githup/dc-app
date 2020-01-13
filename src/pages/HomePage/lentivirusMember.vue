@@ -52,8 +52,7 @@
           prevent-default
           @on-before-index-change="switchTabItem"
           class="vux-1px-t"
-          active-color="#037de0"
-          bar-active-color="#037de0"
+          active-color="#FFB94E"
         >
           <tab-item>自定义维系任务</tab-item>
           <tab-item>新增维系任务</tab-item>

@@ -109,5 +109,19 @@
   "browserslist": [
     "iOS >= 7",
     "Android >= 4.1"
-  ]
+  ],
+  "main": ".eslintrc.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lmm-githup/dc-app.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lmm-githup/dc-app/issues"
+  },
+  "homepage": "https://github.com/Lmm-githup/dc-app#readme"
 }

@@ -24,6 +24,7 @@ const actions = {
     return api.messageTotal({
       userNo
     }).then(res => {
+      console.log(res)
       if (+res.code === 200) {
         commit('UPDATE_MSG', res.data.num)
       }

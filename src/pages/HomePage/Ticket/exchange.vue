@@ -18,7 +18,7 @@
           <div class="number">{{expensePoints || 0}}</div>
           <div>消费积分</div>
         </div>
-        <div>
+        <div> 
           <div class="number">{{behaviorPoints || 0}}</div>
           <div>行为积分</div>
         </div>

@@ -42,7 +42,7 @@ Vue.component('view-box', ViewBox)
 // copy vux2 source code
 const history = window.sessionStorage
 history.clear()
-let historyCount = history.getItem('count') * 1 || 0
+let historyCount = history.getItem('count') * 1 || 0//因为history清空了，所以historyCount必然是0
 history.setItem('/', 0)
 
 Date.prototype.Format = function (fmt) {
@@ -63,24 +63,23 @@ Date.prototype.Format = function (fmt) {
 
 
 // 避免请求报错 写个导航守卫
-import {
-  getToken
-} from '@/utils/auth';
+import {getToken} from '@/utils/auth';
 router.beforeEach((to, from, next) => {
   // console.log(to);
 
   // copy vux2 source code start
   const toIndex = history.getItem(to.path)
   const fromIndex = history.getItem(from.path)
+
   let direction
 
-  if (toIndex) {
+  if (toIndex) {//fromindex不是0或者toindex>fromindex或者toindex和from都是0
     if (!fromIndex || parseInt(toIndex, 10) > parseInt(fromIndex, 10) || (toIndex === '0' && fromIndex === '0')) {
       direction = 'forward'
     } else {
       direction = 'reverse'
     }
-  } else {
+  } else {//首次登录
     ++historyCount
     history.setItem('count', historyCount)
     to.path !== '/' && history.setItem(to.path, historyCount)

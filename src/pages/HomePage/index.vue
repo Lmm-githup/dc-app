@@ -409,7 +409,7 @@ export default {
 .vux-tab-selected{
   span{background:#FFA41A !important;font-weight: bold;box-shadow: #443557 0 0 0.10667rem}
 }
-#u2103_img{position:absolute;top:73%;width:100%;}
+#u2103_img{position:absolute;top:70%;width:100%;}
 #u2105_img{position:absolute;top:20%;left:48.5%;height:100%;}
 .shows{display: block}
 .hides{display:none}
