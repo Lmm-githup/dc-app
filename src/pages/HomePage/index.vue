@@ -145,7 +145,7 @@ import {
   detailByMobile,
   messageTotal//获取消息
 } from "@/api/home";
-import moreImg from '@/assets/images/console/u499.png'
+import moreImg from '@/assets/images/me/work/u499.png'
 import couponImg from '@/assets/images/me/work/u489.png'
 import { BTN_EQUITY,
         MESSAGE_TOTAL,

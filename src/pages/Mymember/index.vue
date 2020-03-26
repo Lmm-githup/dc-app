@@ -128,7 +128,7 @@
       </div>
       <!-- task pop end -->
       <div v-transfer-dom>
-        <popup v-model="showSearch" height="100%">
+        <popup v-model="showSearch" height="100%" ref='showModel'>
           <popup-header
             left-text="取消"
             right-text="清空"
@@ -192,15 +192,15 @@
 
             <group class="inquire-item vux-1px-b" title="类别支持大类:01;中类:0101;小类:010101;数字格式查询">
               <cell title="商品："  inline-desc="多个商品号用英文逗号隔开。">
-                <van-field placeholder="请输入商品" v-model="fromData.prodCode"></van-field>
+                <van-field placeholder="请输入商品" v-model="fromData.prodCode" @focus.native.capture="checkInput" @blur.native.capture="blurInput"></van-field>
               </cell>
               <datetime title="最近消费开始时间：" v-model="fromData.lastOrderStartTime"></datetime>
               <datetime title="最近消费结束时间：" v-model="fromData.lastOrderEndTime"></datetime>
               <cell title="医保余额：">
                 <div class="inquire-input-group">
-                  <van-field type="number" placeholder="min" v-model="fromData.medicareMoneyBegin"></van-field>
+                  <van-field type="number" placeholder="min" v-model="fromData.medicareMoneyBegin" @focus.native.capture="checkInput" @blur.native.capture="blurInput"></van-field>
                   <span class="line"></span>
-                  <van-field type="number" placeholder="max" v-model="fromData.medicareMoneyEnd"></van-field>
+                  <van-field type="number" placeholder="max" v-model="fromData.medicareMoneyEnd" @focus.native.capture="checkInput" @blur.native.capture="blurInput"></van-field>
                   <span class="unit">元</span>
                 </div>
               </cell>
@@ -208,6 +208,7 @@
             <div class="submit-bar">
               <x-button type="primary" @click.native="getList">确认</x-button>
             </div>
+            <div style="display: none;" id="showDiv"></div>
           </div>
         </popup>
       </div>
@@ -570,11 +571,24 @@ export default {
       this.newTaskInfo.startDate = "TODAY";
       this.newTaskInfo.endDate = "TODAY";
       this.newTaskInfo.customerRelaServiceDtoList = [];
+    },
+    checkInput(){
+       var showDiv = document.getElementById('showDiv');
+       showDiv.style.display = "block"
+       var scrollDiv = this.$refs.showModel.$el
+       scrollDiv.scrollTop = scrollDiv.scrollHeight
+    },
+    blurInput(){
+      var showDiv = document.getElementById('showDiv');
+       showDiv.style.display = "none"
+       var scrollDiv = this.$refs.showModel.$el
+       scrollDiv.scrollTop = scrollDiv.scrollHeight
     }
   }
 };
 </script>
 <style lang="less" scoped>
+#showDiv{width:100%;height: 300px;}
 /deep/ .fa{font-size:0.5rem !important;}
 /deep/ .vux-header-title-area{
   width:8rem;
