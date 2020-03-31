@@ -179,6 +179,8 @@ import { Field } from "vant";
 Vue.use(Field);
 
 import { getList } from "@/api/mymember";
+import Utils from "@/utils/utils";
+const utils = new Utils();
 
 import { attentionList } from "@/api/myAttention";
 import NoData from "@/components/common/NoData";
@@ -441,22 +443,30 @@ export default {
       this.top = this.$refs.myheader.$el.clientHeight;
     },
     checkInput(){
-       var showDiv = document.getElementById('showDiv');
-       showDiv.style.display = "block"
-       var scrollDiv = this.$refs.showModel.$el
-       scrollDiv.scrollTop = scrollDiv.scrollHeight
+      let deviceType = utils.deviceType();
+      let that = this;
+        if (deviceType === "android") {
+          var showDiv = document.getElementById('showDiv');
+          showDiv.style.display = "block"//让div显示
+          var scrollDiv = that.$refs.showModel.$el//把页面往上滚动
+          scrollDiv.scrollTop = scrollDiv.scrollHeight
+        }
     },
     blurInput(){
+      let that = this;
+      let deviceType = utils.deviceType();
+      if (deviceType === "android") {
       var showDiv = document.getElementById('showDiv');
        showDiv.style.display = "none"
        var scrollDiv = this.$refs.showModel.$el
-       scrollDiv.scrollTop = scrollDiv.scrollHeight
-    }
+       scrollDiv.scrollTop = scrollDiv.scrollHeight 
+      }
+    },
   }
 };
 </script>
 <style lang="less" scoped>
-#showDiv{width:100%;height: 300px;}
+#showDiv{width:100%;height: 310px;}
 .vux-button-group > a.vux-button-group-current {
   color: #FFF;
   background: #443557;

@@ -306,6 +306,9 @@ import {
 } from "@/api/mymember";
 import { queryStaffList } from "@/api/user";
 import NoData from "@/components/common/NoData";
+import Utils from "@/utils/utils";
+const utils = new Utils();
+
 
 import {
   Checkbox,
@@ -755,22 +758,30 @@ export default {
       this.checkList = value;
     },
     checkInput(){
-       var showDiv = document.getElementById('showDiv');
-       showDiv.style.display = "block"
-       var scrollDiv = this.$refs.showModel.$el
-       scrollDiv.scrollTop = scrollDiv.scrollHeight
+      let deviceType = utils.deviceType();
+      let that = this;
+        if (deviceType === "android") {
+          var showDiv = document.getElementById('showDiv');
+          showDiv.style.display = "block"//让div显示
+          var scrollDiv = that.$refs.showModel.$el//把页面往上滚动
+          scrollDiv.scrollTop = scrollDiv.scrollHeight
+        }
     },
     blurInput(){
+      let that = this;
+      let deviceType = utils.deviceType();
+      if (deviceType === "android") {
       var showDiv = document.getElementById('showDiv');
        showDiv.style.display = "none"
        var scrollDiv = this.$refs.showModel.$el
-       scrollDiv.scrollTop = scrollDiv.scrollHeight
-    }
+       scrollDiv.scrollTop = scrollDiv.scrollHeight 
+      }
+    },
   }
 };
 </script>
 <style lang="less" scoped>
-#showDiv{width:100%;height: 300px;}
+#showDiv{width:100%;height: 310px;}
 /deep/ .main{padding:0 0;}
 /deep/ .vux-checker-box {
   padding: 0.2rem 0.4rem;

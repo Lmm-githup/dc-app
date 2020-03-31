@@ -157,7 +157,7 @@
               </div>
               <cell title="会员等级："></cell>
               <div class="inquire-input-group">
-                <checker
+                <checker 
                   v-model="fromData.memberGrade"
                   type="checkbox"
                   default-item-class="demo2-item"
@@ -192,6 +192,7 @@
 
             <group class="inquire-item vux-1px-b" title="类别支持大类:01;中类:0101;小类:010101;数字格式查询">
               <cell title="商品："  inline-desc="多个商品号用英文逗号隔开。">
+                <!-- @focus.native.capture="checkInput" @blur.native.capture="blurInput" -->
                 <van-field placeholder="请输入商品" v-model="fromData.prodCode" @focus.native.capture="checkInput" @blur.native.capture="blurInput"></van-field>
               </cell>
               <datetime title="最近消费开始时间：" v-model="fromData.lastOrderStartTime"></datetime>
@@ -248,6 +249,8 @@ import Vue from "vue";
 import InfiniteLoading from "vue-infinite-loading";
 import MymemberItem from "@/components/Mymember/MymemberItem";
 import NoData from "@/components/common/NoData";
+import Utils from "@/utils/utils";
+const utils = new Utils();
 
 import { mapState, mapActions } from "vuex";
 
@@ -355,7 +358,7 @@ export default {
         startDate: "TODAY",
         endDate: "TODAY",
         customerRelaServiceDtoList: []
-      }
+      },
     };
   },
   computed: {},
@@ -370,7 +373,8 @@ export default {
       }
     }
   },
-  created() {},
+  created() {
+  },
   mounted() {
     this.getHeaderHight();
   },
@@ -573,22 +577,30 @@ export default {
       this.newTaskInfo.customerRelaServiceDtoList = [];
     },
     checkInput(){
-       var showDiv = document.getElementById('showDiv');
-       showDiv.style.display = "block"
-       var scrollDiv = this.$refs.showModel.$el
-       scrollDiv.scrollTop = scrollDiv.scrollHeight
+       let that = this;
+      let deviceType = utils.deviceType();
+        if (deviceType === "android") {
+          var showDiv = document.getElementById('showDiv');
+          showDiv.style.display = "block"//让div显示
+          var scrollDiv = that.$refs.showModel.$el//把页面往上滚动
+          scrollDiv.scrollTop = scrollDiv.scrollHeight
+        }
     },
     blurInput(){
+      let that = this;
+      let deviceType = utils.deviceType();
+      if (deviceType === "android") {
       var showDiv = document.getElementById('showDiv');
        showDiv.style.display = "none"
        var scrollDiv = this.$refs.showModel.$el
-       scrollDiv.scrollTop = scrollDiv.scrollHeight
-    }
+       scrollDiv.scrollTop = scrollDiv.scrollHeight 
+      }
+    },
   }
 };
 </script>
 <style lang="less" scoped>
-#showDiv{width:100%;height: 300px;}
+#showDiv{width:100%;height: 310px;}
 /deep/ .fa{font-size:0.5rem !important;}
 /deep/ .vux-header-title-area{
   width:8rem;

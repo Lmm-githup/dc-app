@@ -229,6 +229,9 @@ Vue.use(Field);
 
 import Vue from "vue";
 import { mapState, mapActions } from "vuex";
+import Utils from "@/utils/utils";
+const utils = new Utils();
+
 
 import { getList,
 getGuideCustomTask,
@@ -545,23 +548,31 @@ export default {
       this.newTaskInfo.endDate = "TODAY";
       this.newTaskInfo.customerRelaServiceDtoList = [];
     },
-    checkInput(){
-       var showDiv = document.getElementById('showDiv');
-       showDiv.style.display = "block"
-       var scrollDiv = this.$refs.showModel.$el
-       scrollDiv.scrollTop = scrollDiv.scrollHeight
+   checkInput(){
+      let deviceType = utils.deviceType();
+      let that = this;
+        if (deviceType === "android") {
+          var showDiv = document.getElementById('showDiv');
+          showDiv.style.display = "block"//让div显示
+          var scrollDiv = that.$refs.showModel.$el//把页面往上滚动
+          scrollDiv.scrollTop = scrollDiv.scrollHeight
+        }
     },
     blurInput(){
+      let that = this;
+      let deviceType = utils.deviceType();
+      if (deviceType === "android") {
       var showDiv = document.getElementById('showDiv');
        showDiv.style.display = "none"
        var scrollDiv = this.$refs.showModel.$el
-       scrollDiv.scrollTop = scrollDiv.scrollHeight
-    }
+       scrollDiv.scrollTop = scrollDiv.scrollHeight 
+      }
+    },
   }
 };
 </script>
 <style lang="less" scoped>
-#showDiv{width:100%;height: 300px;}
+#showDiv{width:100%;height: 310px;}
 /deep/ .batch-task{font-size:0.5rem !important;}
 /deep/ .weui-btn_primary{background:#FFB94E !important}
 /deep/ .vux-popup-header-right{color:#FFB94E !important}
