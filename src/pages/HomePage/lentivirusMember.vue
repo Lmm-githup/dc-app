@@ -158,9 +158,9 @@
               </div>
             <cell title="会员积分：">
               <div class="inquire-input-group">
-                <van-field type="number" placeholder="min" v-model="fromData.memberIntegralBegin"></van-field>
+                <van-field type="number" placeholder="min" v-model="fromData.memberIntegralBegin"  @focus.native.capture="checkInput" @blur.native.capture="blurInput"></van-field>
                 <span class="line"></span>
-                <van-field type="number" placeholder="max" v-model="fromData.memberIntegralEnd"></van-field>
+                <van-field type="number" placeholder="max" v-model="fromData.memberIntegralEnd"  @focus.native.capture="checkInput" @blur.native.capture="blurInput"></van-field>
                 <span class="unit">分</span>
               </div>
             </cell>
@@ -172,6 +172,7 @@
               :max="6"
               :is-type="validNumber"
               placeholder="请输入正确的数据格式"
+               @focus.native.capture="checkInput" @blur.native.capture="blurInput"
             ></x-input>
           </group>
           <group class="inquire-item vux-1px-b" title="类别支持大类:01;中类:0101;小类:010101;数字格式查询">
